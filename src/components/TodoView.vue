@@ -23,7 +23,7 @@ function validation() {
   <div class="card">
     <div class="card__header">
       <div class="card__title">
-        <h2>View Todo</h2>
+        <h2>{{ isEditing ? 'Editing' : 'View' }} Todo</h2>
         <button
           title="Close"
           @click="
@@ -157,7 +157,7 @@ function validation() {
         transition: all 0.3s ease;
 
         &:hover {
-          background-color: #40424f;
+          background-color: #575a60;
         }
 
         i {

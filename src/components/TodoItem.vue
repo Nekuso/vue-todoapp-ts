@@ -1,17 +1,14 @@
 <script setup lang="ts">
-import {
-  deleteTodo,
-  completeTodo,
-  viewTodo,
-} from "@/utils/todoUtils";
+import { deleteTodo, completeTodo, viewTodo } from '@/utils/todoUtils'
 
-defineProps(["todoItem"]);
+defineProps(['todoItem'])
 </script>
 
 <template>
   <div class="todo__item">
     <div class="todo__item__complete">
       <input
+        title="Mark as completed"
         v-model="todoItem.isCompleted"
         type="checkbox"
         @click="completeTodo(todoItem)"
@@ -26,7 +23,7 @@ defineProps(["todoItem"]);
       </p>
     </div>
     <div class="todo__item__actions">
-      <button @click="deleteTodo(todoItem)">
+      <button @click="deleteTodo(todoItem)" title="Delete">
         <i class="bx bx-trash"></i>
       </button>
     </div>
@@ -56,7 +53,7 @@ defineProps(["todoItem"]);
     grid-row-end: 2;
     grid-column-end: 2;
 
-    input[type="checkbox"] {
+    input[type='checkbox'] {
       width: 1.2rem;
       height: 1.2rem;
       border-radius: 50%;
@@ -149,11 +146,11 @@ defineProps(["todoItem"]);
   background: black;
 
   .todo__item__complete {
-    input[type="checkbox"] {
+    input[type='checkbox'] {
       border: 1px solid #fff;
     }
 
-    input[type="checkbox"]:checked {
+    input[type='checkbox']:checked {
       background: #fff;
     }
   }

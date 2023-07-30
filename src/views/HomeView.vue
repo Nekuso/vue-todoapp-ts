@@ -5,6 +5,9 @@ import TodoAll from '@/components/TodoAll.vue'
 import TodoPending from '@/components/TodoPending.vue'
 import TodoCompleted from '@/components/TodoCompleted.vue'
 import { viewMode, createMode, toggleCreateMode } from '@/utils/todoUtils'
+import { todoList } from '@/utils/todoUtils'
+import { pendingCount } from '@/utils/categories'
+import { completedCount } from '@/utils/categories'
 </script>
 
 <template>
@@ -34,11 +37,17 @@ import { viewMode, createMode, toggleCreateMode } from '@/utils/todoUtils'
           <TodoAll />
         </div>
         <div class="pending__items category">
-          <h2>🕒 Pendings</h2>
+          <div class="category__header">
+            <h2>🕒 Pendings</h2>
+            <span class="count">{{ pendingCount }}/{{ todoList.length }}</span>
+          </div>
           <TodoPending />
         </div>
         <div class="completed__items category">
-          <h2>✅ Completed</h2>
+          <div class="category__header">
+            <h2>✅ Completed</h2>
+            <span class="count">{{ completedCount }}/{{ todoList.length }}</span>
+          </div>
           <TodoCompleted />
         </div>
       </div>
@@ -220,9 +229,21 @@ import { viewMode, createMode, toggleCreateMode } from '@/utils/todoUtils'
         box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
         background-color: #ffffff;
 
-        h2 {
-          font-size: 1.2rem;
-          font-weight: 600;
+        .category__header {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          h2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+          }
+
+          .count {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #282936;
+          }
         }
       }
       .all__items {
