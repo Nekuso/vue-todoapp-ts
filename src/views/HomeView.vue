@@ -5,10 +5,6 @@ import TodoAll from '@/components/TodoAll.vue'
 import TodoPending from '@/components/TodoPending.vue'
 import TodoCompleted from '@/components/TodoCompleted.vue'
 import { viewMode, createMode, toggleCreateMode } from '@/utils/todoUtils'
-import { todoList } from '@/utils/todoUtils'
-import { watch } from 'vue'
-
-
 </script>
 
 <template>
