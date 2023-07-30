@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { pendingList } from "../utils/categories";
+import { pendingList } from "@/utils/categories";
 import TodoItem from "./TodoItem.vue";
 </script>
 

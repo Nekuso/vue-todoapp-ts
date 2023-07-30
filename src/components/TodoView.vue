@@ -1,20 +1,20 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import { updateTodo, toggleViewMode, todoItem } from "../utils/todoUtils";
+import { ref } from 'vue'
+import { updateTodo, toggleViewMode, todoItem } from '../utils/todoUtils'
 
-const isEditing = ref(false);
+const isEditing = ref(false)
 
 function editMode() {
-  isEditing.value = true;
+  isEditing.value = true
 }
 
 function validation() {
-  if (todoItem.todoTitle === "" || todoItem.todoTitle === " ") {
-    alert("Please enter a title");
+  if (todoItem.todoTitle === '' || todoItem.todoTitle === ' ') {
+    alert('Please enter a title')
   } else {
-    updateTodo(todoItem.id, todoItem.todoTitle, todoItem.todoDescription);
-    toggleViewMode();
-    isEditing.value = false;
+    updateTodo(todoItem)
+    toggleViewMode()
+    isEditing.value = false
   }
 }
 </script>
@@ -28,8 +28,8 @@ function validation() {
           title="Close"
           @click="
             () => {
-              toggleViewMode();
-              isEditing = false;
+              toggleViewMode()
+              isEditing = false
             }
           "
         >

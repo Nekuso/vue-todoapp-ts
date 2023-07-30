@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import TodoCreator from '../components/TodoCreator.vue'
-import TodoView from '../components/TodoView.vue'
+import TodoCreator from '@/components/TodoCreator.vue'
+import TodoView from '@/components/TodoView.vue'
 import TodoAll from '@/components/TodoAll.vue'
 import TodoPending from '@/components/TodoPending.vue'
 import TodoCompleted from '@/components/TodoCompleted.vue'

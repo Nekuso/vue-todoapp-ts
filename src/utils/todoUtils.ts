@@ -31,6 +31,7 @@ watch(
   todoList,
   (todoList) => {
     localStorage.setItem('todoList', JSON.stringify(todoList))
+    console.log('todoList updated')
   },
   { deep: true }
 )

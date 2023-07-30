@@ -3,7 +3,7 @@ import {
   deleteTodo,
   completeTodo,
   viewTodo,
-} from "../utils/todoUtils";
+} from "@/utils/todoUtils";
 
 defineProps(["todoItem"]);
 </script>
