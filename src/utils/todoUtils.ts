@@ -4,6 +4,7 @@ import type { todoItemType } from '@/types'
 
 export const todoList = ref<todoItemType[]>(
   JSON.parse(localStorage.getItem('todoList') || '[]') &&
+    // remove this line to line 29 to disable default value
     JSON.parse(localStorage.getItem('todoList') || '[]').length > 0
     ? JSON.parse(localStorage.getItem('todoList') || '[]')
     : [
