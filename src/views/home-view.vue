@@ -9,7 +9,7 @@ import { todoList } from '@/utils/todoUtils'
 import { useTodoCounts } from '@/composables/useTodoCounts'
 import CategoryCount from '@/components/todo-category-count.vue'
 
-const { totalCount, pendingCount, completedCount } = useTodoCounts()
+const { pendingCount, completedCount } = useTodoCounts()
 </script>
 
 <template>
