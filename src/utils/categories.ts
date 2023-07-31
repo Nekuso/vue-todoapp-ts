@@ -9,8 +9,3 @@ export const pendingList = computed(() =>
 export const completedList = computed(() =>
   todoList.value.filter((todo: TodoItemType) => todo.isCompleted)
 )
-
-// Counters
-export const totalCount = computed(() => todoList.value.length)
-export const pendingCount = computed(() => pendingList.value.length)
-export const completedCount = computed(() => completedList.value.length)

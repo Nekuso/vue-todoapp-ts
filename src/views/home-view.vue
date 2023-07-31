@@ -6,8 +6,10 @@ import TodoPending from '@/components/todo-pending.vue'
 import TodoCompleted from '@/components/todo-completed.vue'
 import { viewMode, createMode, toggleCreateMode } from '@/utils/todoUtils'
 import { todoList } from '@/utils/todoUtils'
-import { pendingCount } from '@/utils/categories'
-import { completedCount } from '@/utils/categories'
+import { useTodoCounts } from '@/composables/useTodoCounts'
+import CategoryCount from '@/components/todo-category-count.vue'
+
+const { totalCount, pendingCount, completedCount } = useTodoCounts()
 </script>
 
 <template>
@@ -39,14 +41,14 @@ import { completedCount } from '@/utils/categories'
         <div class="pending__items category">
           <div class="category__header">
             <h2>🕒 Pendings</h2>
-            <span class="count">{{ pendingCount }}/{{ todoList.length }}</span>
+            <CategoryCount :todoList="todoList" :categoryCount="pendingCount" />
           </div>
           <TodoPending />
         </div>
         <div class="completed__items category">
           <div class="category__header">
             <h2>✅ Completed</h2>
-            <span class="count">{{ completedCount }}/{{ todoList.length }}</span>
+            <CategoryCount :todoList="todoList" :categoryCount="completedCount" />
           </div>
           <TodoCompleted />
         </div>
