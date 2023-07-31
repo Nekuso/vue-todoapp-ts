@@ -1,17 +1,15 @@
 <script setup lang="ts">
-import { todoList } from "@/utils/todoUtils";
-import TodoItem from "./TodoItem.vue";
-
+import { todoList } from '@/utils/todoUtils'
+import TodoItem from './TodoItem.vue'
+import draggable from 'vuedraggable'
 </script>
 
 <template>
-  <div class="all__items__content">
-    <TodoItem
-      v-for="todoItem in todoList"
-      :key="todoItem.id"
-      :todoItem="todoItem"
-    />
-  </div>
+  <draggable v-model="todoList" item-key="id" class="all__items__content">
+    <template #item="{ element }">
+      <TodoItem :todoItem="element" />
+    </template>
+  </draggable>
 </template>
 
 <style lang="scss" scoped>
@@ -20,7 +18,7 @@ import TodoItem from "./TodoItem.vue";
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  // gap: 1rem;
   overflow-y: scroll;
   scrollbar-width: none;
   -ms-overflow-style: none;
