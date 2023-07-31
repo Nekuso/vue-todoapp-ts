@@ -18,7 +18,7 @@ import draggable from 'vuedraggable'
   height: 100%;
   display: flex;
   flex-direction: column;
-  // gap: 1rem;
+  gap: 0.5rem;
   overflow-y: scroll;
   scrollbar-width: none;
   -ms-overflow-style: none;
