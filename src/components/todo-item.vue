@@ -1,7 +1,14 @@
 <script setup lang="ts">
 import { deleteTodo, completeTodo, viewTodo } from '@/utils/todoUtils'
+import type { TodoItemType } from '@/types/todoType'
+import type { PropType } from 'vue'
 
-defineProps(['todoItem'])
+const props = defineProps({
+  todoItem: {
+    type: Object as PropType<TodoItemType>,
+    required: true
+  }
+})
 </script>
 
 <template>
@@ -11,19 +18,19 @@ defineProps(['todoItem'])
         title="Mark as completed"
         v-model="todoItem.isCompleted"
         type="checkbox"
-        @click="completeTodo(todoItem)"
+        @click="completeTodo(props.todoItem)"
       />
     </div>
-    <div class="todo__item__content" @click="viewTodo(todoItem.id)">
-      <h2 :class="{ completed: todoItem.isCompleted }">
-        {{ todoItem.todoTitle }}
+    <div class="todo__item__content" @click="viewTodo(props.todoItem)">
+      <h2 :class="{ completed: props.todoItem.isCompleted }">
+        {{ props.todoItem.todoTitle }}
       </h2>
-      <p :class="{ completed: todoItem.isCompleted }">
-        {{ todoItem.todoDescription }}
+      <p :class="{ completed: props.todoItem.isCompleted }">
+        {{ props.todoItem.todoDescription }}
       </p>
     </div>
     <div class="todo__item__actions">
-      <button @click="deleteTodo(todoItem)" title="Delete">
+      <button @click="deleteTodo(props.todoItem)" title="Delete">
         <i class="bx bx-trash"></i>
       </button>
     </div>

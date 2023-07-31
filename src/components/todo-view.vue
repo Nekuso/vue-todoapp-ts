@@ -8,14 +8,22 @@ function editMode() {
   isEditing.value = true
 }
 
-function validation() {
+function close() {
+  toggleViewMode()
+  isEditing.value = false
+}
+
+function validate() {
   if (todoItem.todoTitle === '' || todoItem.todoTitle === ' ') {
     alert('Please enter a title')
   } else {
     updateTodo(todoItem)
-    toggleViewMode()
-    isEditing.value = false
+    close()
   }
+}
+
+function submit() {
+  validate()
 }
 </script>
 
@@ -24,15 +32,7 @@ function validation() {
     <div class="card__header">
       <div class="card__title">
         <h2>{{ isEditing ? 'Editing' : 'View' }} Todo</h2>
-        <button
-          title="Close"
-          @click="
-            () => {
-              toggleViewMode()
-              isEditing = false
-            }
-          "
-        >
+        <button title="Close" @click="close()">
           <i class="bx bx-x"></i>
         </button>
       </div>
@@ -47,7 +47,7 @@ function validation() {
         <button title="Edit Todo" v-if="!isEditing" @click="editMode">
           <i class="bx bx-edit"></i>
         </button>
-        <button title="Save Todo" v-else="isEditing" @click="validation">
+        <button title="Save Todo" v-else="isEditing" @click="submit">
           <i class="bx bxs-send"></i>
         </button>
       </div>

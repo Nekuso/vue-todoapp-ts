@@ -1,8 +1,8 @@
 import { uid } from 'uid'
 import { ref, reactive, watch } from 'vue'
-import type { todoItemType } from '@/types'
+import type { TodoItemType } from '@/types/todoType'
 
-export const todoList = ref<todoItemType[]>(
+export const todoList = ref<TodoItemType[]>(
   JSON.parse(localStorage.getItem('todoList') || '[]').length > 0
     ? JSON.parse(localStorage.getItem('todoList') || '[]')
     : [
@@ -36,7 +36,7 @@ watch(
   { deep: true }
 )
 
-export const todoItem = reactive<todoItemType>({
+export const todoItem = reactive<TodoItemType>({
   id: '',
   todoTitle: '',
   todoDescription: '',
@@ -56,8 +56,8 @@ export const toggleCreateMode = () => void (createMode.value = !createMode.value
   createMode.value = !createMode.value
 }
 
-export const viewTodo = (id: string) => {
-  const index = todoList.value.findIndex((item) => item.id === id)
+export const viewTodo = (todo: TodoItemType) => {
+  const index = todoList.value.findIndex((item) => item.id === todo.id)
   todoItem.id = todoList.value[index].id
   todoItem.todoTitle = todoList.value[index].todoTitle
   todoItem.todoDescription = todoList.value[index].todoDescription
@@ -66,7 +66,7 @@ export const viewTodo = (id: string) => {
 }
 
 export const createTodo = (todoTitle: string, todoDescription: string) => {
-  const newTodo: todoItemType = {
+  const newTodo: TodoItemType = {
     id: uid(),
     todoTitle,
     todoDescription,
@@ -75,17 +75,17 @@ export const createTodo = (todoTitle: string, todoDescription: string) => {
   todoList.value.unshift(newTodo)
 }
 
-export const updateTodo = (todo: todoItemType) => {
+export const updateTodo = (todo: TodoItemType) => {
   const index = todoList.value.findIndex((item) => item.id === todo.id)
   todoList.value[index] = todo
 }
 
-export const deleteTodo = (todo: todoItemType) => {
+export const deleteTodo = (todo: TodoItemType) => {
   const index = todoList.value.findIndex((item) => item.id === todo.id)
   todoList.value.splice(index, 1)
 }
 
-export const completeTodo = (todo: todoItemType) => {
+export const completeTodo = (todo: TodoItemType) => {
   const index = todoList.value.findIndex((item) => item.id === todo.id)
   todoList.value[index].isCompleted = !todoList.value[index].isCompleted
 }

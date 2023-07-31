@@ -1,19 +1,27 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import { createTodo, toggleCreateMode } from "../utils/todoUtils";
+import { ref } from 'vue'
+import { createTodo, toggleCreateMode } from '../utils/todoUtils'
 
-const todoTitle = ref<string>("");
-const todoDescription = ref<string>("");
+const todoTitle = ref<string>('')
+const todoDescription = ref<string>('')
 
-function validation() {
-  if (todoTitle.value === "" || todoTitle.value === " ") {
-    alert("Please enter a title");
+function reset() {
+  toggleCreateMode()
+  todoTitle.value = ''
+  todoDescription.value = ''
+}
+
+function validate() {
+  if (todoTitle.value === '' || todoTitle.value === ' ') {
+    alert('Please enter a title')
   } else {
-    createTodo(todoTitle.value, todoDescription.value);
-    toggleCreateMode();
-    todoTitle.value = "";
-    todoDescription.value = "";
+    createTodo(todoTitle.value, todoDescription.value)
+    reset()
   }
+}
+
+function submit() {
+  validate()
 }
 </script>
 
@@ -22,27 +30,13 @@ function validation() {
     <div class="card__header">
       <div class="card__title">
         <h2>Create Todo</h2>
-        <button
-          title="Close"
-          @click="
-            () => {
-              toggleCreateMode();
-              todoTitle = '';
-              todoDescription = '';
-            }
-          "
-        >
+        <button title="Close" @click="reset()">
           <i class="bx bx-x"></i>
         </button>
       </div>
       <div class="input__container">
-        <input
-          v-model="todoTitle"
-          type="text"
-          class="title__input"
-          placeholder="Title"
-        />
-        <button title="Submit" @click="validation">
+        <input v-model="todoTitle" type="text" class="title__input" placeholder="Title" />
+        <button title="Submit" @click="submit">
           <i class="bx bxs-send"></i>
         </button>
       </div>

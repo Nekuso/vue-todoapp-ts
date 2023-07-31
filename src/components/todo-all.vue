@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { todoList } from '@/utils/todoUtils'
-import TodoItem from './TodoItem.vue'
-import draggable from 'vuedraggable'
+import TodoItem from './todo-item.vue'
+import Draggable from 'vuedraggable'
 </script>
 
 <template>
-  <draggable v-model="todoList" item-key="id" class="all__items__content">
+  <Draggable v-model="todoList" item-key="id" class="all__items__content">
     <template #item="{ element }">
       <TodoItem :todoItem="element" />
     </template>
-  </draggable>
+  </Draggable>
 </template>
 
 <style lang="scss" scoped>
