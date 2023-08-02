@@ -5,5 +5,5 @@ const props = defineProps({
 })
 </script>
 <template>
-  <span class="count"> {{ categoryCount }}/{{ todoList?.length }} </span>
+  <span class="count"> {{ props.categoryCount }}/{{ props.todoList?.length }} </span>
 </template>
